@@ -26,11 +26,19 @@ print(np.cov(m3.T))
 
 f=open('dataset2.csv','w',newline='')
 writer=csv.writer(f)
-for i in m1:
+a = np.ones(600)
+b = np.ones(300)
+for i in range(0,300):
+    b[i]=2
+c = np.ones(100)
+for i in range(0,100):
+    c[i]=3
+
+for i in np.c_[m1,a]:
     writer.writerow(i)
-for i in m2:
+for i in np.c_[m2,b]:
     writer.writerow(i)
-for i in m2:
+for i in np.c_[m3,c]:
     writer.writerow(i)
 fig = plt.figure(0)
 plt.xlabel('x')

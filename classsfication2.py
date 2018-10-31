@@ -74,7 +74,7 @@ def min_distance(x,u1,u2,u3):#最短欧式距离规则
 
 
 
-csv_reader = csv.reader(open('dataset1.csv', encoding='utf-8'))
+csv_reader = csv.reader(open('dataset2.csv', encoding='utf-8'))
 u1 = np.array([1,1])
 u2 = np.array([4,4])
 u3 = np.array([8,1])
@@ -82,9 +82,9 @@ sum=0
 for row in csv_reader:#似然率测试规则
     x = np.array([float(row[0]),float(row[1])])
     #print(x)
-    pr_w1 = (1 / 3)
-    pr_w2 = (1 / 3)
-    pr_w3 = (1 / 3)
+    pr_w1 = 0.6
+    pr_w2 = 0.3
+    pr_w3 = 0.1
     predict=likelihood(x, u1, u2, u3, pr_w1, pr_w2, pr_w3)
     #print(predict[0])
     if float(row[2])==predict[0]+1:
@@ -92,16 +92,16 @@ for row in csv_reader:#似然率测试规则
 print(sum/1000)
 
 
-csv_reader = csv.reader(open('dataset1.csv', encoding='utf-8'))
+csv_reader = csv.reader(open('dataset2.csv', encoding='utf-8'))
 #贝叶斯风险规则
 Cij=np.array([[0,2,3],[1,0,2.5],[1,1,0]])
 sum=0
 for row in csv_reader:
     x = np.array([float(row[0]),float(row[1])])
     #print(x)
-    pr_w1 = (1 / 3)
-    pr_w2 = (1 / 3)
-    pr_w3 = (1 / 3)
+    pr_w1 = 0.6
+    pr_w2 = 0.3
+    pr_w3 = 0.1
     predict=Bayes(x, u1, u2, u3, pr_w1, pr_w2, pr_w3,Cij)
     #print(predict[0])
     if float(row[2]) == predict[0] + 1:
@@ -109,15 +109,15 @@ for row in csv_reader:
 print(sum / 1000)
 
 #最大后验概率规则
-csv_reader = csv.reader(open('dataset1.csv', encoding='utf-8'))
+csv_reader = csv.reader(open('dataset2.csv', encoding='utf-8'))
 Cij=np.array([[0,1,1],[1,0,1],[1,1,0]])
 sum=0
 for row in csv_reader:
     x = np.array([float(row[0]),float(row[1])])
     #print(x)
-    pr_w1 = (1 / 3)
-    pr_w2 = (1 / 3)
-    pr_w3 = (1 / 3)
+    pr_w1 = 0.6
+    pr_w2 = 0.3
+    pr_w3 = 0.1
     predict=Bayes(x, u1, u2, u3, pr_w1, pr_w2, pr_w3,Cij)
     #print(predict[0])
     if float(row[2]) == predict[0] + 1:
@@ -125,14 +125,14 @@ for row in csv_reader:
 print(sum / 1000)
 
 #最短欧式距离准则
-csv_reader = csv.reader(open('dataset1.csv', encoding='utf-8'))
+csv_reader = csv.reader(open('dataset2.csv', encoding='utf-8'))
 sum=0
 for row in csv_reader:
     x = np.array([float(row[0]),float(row[1])])
     #print(x)
-    pr_w1 = (1 / 3)
-    pr_w2 = (1 / 3)
-    pr_w3 = (1 / 3)
+    pr_w1 = 0.6
+    pr_w2 = 0.3
+    pr_w3 = 0.1
     predict=min_distance(x, u1, u2, u3)
     #print(predict[0])
     if float(row[2]) == predict[0] + 1:
